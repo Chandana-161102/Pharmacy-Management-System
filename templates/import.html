@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    <title>TableConnector</title>
+    <style>
+       body{
+            background-color: rgb(235, 233, 233);
+        }
+        h1{
+            text-align: center;
+            color: rgba(0, 0, 0, 0.74);
+            background-color: bisque;
+            box-shadow: 8px 8px 5px rgb(58, 58, 58);
+        }
+       a{
+            color: #037c28;
+            font-size: large;
+            text-shadow: 1px 1px;
+        }
+        button {
+            background-color: transparent;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 6px solid rgb(75, 136, 80);
+        }
+        button:hover{
+            background-color: #61a576;
+        }
+        div {
+            text-align: center;
+            color: black;
+            font-size: large;
+            margin: 10px;
+            padding: 5px;
+            height: auto;
+            width: auto;
+            border-radius: 2px;
+            background-color: rgb(209, 223, 209);
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,th{
+            border:1px solid #ddd;
+            padding: 8px;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(odd){
+            background-color: #f3e3e3;
+        }
+        tr:hover{
+            background-color: #ddd;
+        }
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h1>Pharmacy Databse Management System</h1>
+
+<button><a href="/" style="text-decoration: none;">Back</a></button>
+<div>
+    <p>
+        Press table button to see the table and its values.
+    </p>
+</div>
+<div>
+    <table border="1">
+        {% for row in viewdetails %}
+        <tr>
+            {% for column in row %}
+            <td><button><a>{{column}}</a></button></td>
+            <td>
+                <form action="/import/{{column}}" method="post">
+                    <input type="text" name="file" required>
+                    <input type="submit">
+                </form>
+            </td>
+            {% endfor %}
+           
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
